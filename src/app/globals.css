@@ -1,26 +1,109 @@
-@import "tailwindcss";
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-mirage-50: #f0f7fe;
+  --color-mirage-100: #deecfb;
+  --color-mirage-200: #c4e0f9;
+  --color-mirage-300: #9cccf4;
+  --color-mirage-400: #6dafed;
+  --color-mirage-500: #4b90e6;
+  --color-mirage-600: #3674da;
+  --color-mirage-700: #2d60c8;
+  --color-mirage-800: #2a4fa3;
+  --color-mirage-900: #274481;
+  --color-mirage-950: #0f172a;
+  --color-mirage: #0F172A;
+
+  --color-lynch-50: #f4f7f9;
+  --color-lynch-100: #ebf1f4;
+  --color-lynch-200: #dae6eb;
+  --color-lynch-300: #c3d5de;
+  --color-lynch-400: #aac0cf;
+  --color-lynch-500: #94abc0;
+  --color-lynch-600: #7d92ae;
+  --color-lynch-700: #657790;
+  --color-lynch-800: #58677b;
+  --color-lynch-900: #4b5664;
+  --color-lynch-950: #2c323a;
+  --color-lynch: #657790;
+
+  --color-black-haze-50: #f8fafc;
+  --color-black-haze-100: #e9eff5;
+  --color-black-haze-200: #cedde9;
+  --color-black-haze-300: #a3c1d6;
+  --color-black-haze-400: #729fbe;
+  --color-black-haze-500: #5083a7;
+  --color-black-haze-600: #3d698c;
+  --color-black-haze-700: #325572;
+  --color-black-haze-800: #2d495f;
+  --color-black-haze-900: #293e51;
+  --color-black-haze-950: #1b2836;
+  --color-black-haze: #F8FAFC;
+
+  --color-mauvelous-50: #fef2f3;
+  --color-mauvelous-100: #fde6e9;
+  --color-mauvelous-200: #fad1d8;
+  --color-mauvelous-300: #f5acb8;
+  --color-mauvelous-400: #f0899c;
+  --color-mauvelous-500: #e44f6f;
+  --color-mauvelous-600: #cf2f58;
+  --color-mauvelous-700: #ae224a;
+  --color-mauvelous-800: #921f44;
+  --color-mauvelous-900: #7d1e3f;
+  --color-mauvelous-950: #460b1e;
+  --color-mauvelous: #F0899C;
+
+  --color-shakespeare-50: #ebfdff;
+  --color-shakespeare-100: #cef8ff;
+  --color-shakespeare-200: #a2f0ff;
+  --color-shakespeare-300: #63e3fd;
+  --color-shakespeare-400: #1ccbf4;
+  --color-shakespeare-500: #00b5e2;
+  --color-shakespeare-600: #038ab7;
+  --color-shakespeare-700: #0a6f94;
+  --color-shakespeare-800: #125a78;
+  --color-shakespeare-900: #144b65;
+  --color-shakespeare-950: #063146;
+  --color-shakespeare: #00B5E2;
+
+  --color-orange-peel-50: #fff8eb;
+  --color-orange-peel-100: #feeac7;
+  --color-orange-peel-200: #fdd28a;
+  --color-orange-peel-300: #fcbb4d;
+  --color-orange-peel-400: #fbab24;
+  --color-orange-peel-500: #f59e0b;
+  --color-orange-peel-600: #d98b06;
+  --color-orange-peel-700: #b47409;
+  --color-orange-peel-800: #92610e;
+  --color-orange-peel-900: #78510f;
+  --color-orange-peel-950: #452c03;
+  --color-orange-peel: #F59E0B;
+
+  --spacing: 1px;
+
+  --breakpoint-2xl: 90rem;
+
+  --font-inter: 'Inter',
+    Arial,
+    Helvetica,
+    sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    src: url('../../public/fonts/Inter-VariableFont.ttf') format("truetype-variations");
+    font-weight: 100 900;
+    font-style: normal;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-lynch);
+  background: #FFFFFF;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
