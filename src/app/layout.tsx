@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from "@mantine/core";
 import { theme } from "@/theme";
+// styles
+import '@mantine/core/styles.css';
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Creative agency site",

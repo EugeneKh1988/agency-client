@@ -14,14 +14,15 @@ const SvgIcon = ({
   const icons: Record<string, React.ReactElement> = {
     bar: (
       <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 50 50"
-        width="32"
-        height="32"
         {...classNameValue}
       >
         <path
-          d="M 5 9 L 5 11 L 45 11 L 45 9 L 5 9 z M 5 24 L 5 26 L 45 26 L 45 24 L 5 24 z M 5 39 L 5 41 L 45 41 L 45 39 L 5 39 z"
+          d="M4 6H20V8H4V6ZM8 11H20V13H8V11ZM13 16H20V18H13V16Z"
           fill="currentColor"
         />
       </svg>
