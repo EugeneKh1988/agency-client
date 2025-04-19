@@ -15,3 +15,10 @@ export interface IImage {
     name?: string;
     href?: string;
 }
+
+export interface IService {
+    iconName?: string;
+    title?: string;
+    body?: string;
+    href?: string;
+}
