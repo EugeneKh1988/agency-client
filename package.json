@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mantine/carousel": "^7.17.4",
     "@mantine/core": "^7.17.4",
     "@mantine/hooks": "^7.17.4",
+    "embla-carousel-react": "^8.5.2",
     "next": "15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

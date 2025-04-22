@@ -16,7 +16,7 @@ const userComment: IComment = {
     comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam."
 };
 
-const team = [
+export const team = [
   [
     {imageHref: "/team1.jpg", name: "Worker 1", position: "Manager"},
     {imageHref: "/team2.jpg", name: "Worker 2", position: "Manager"},
