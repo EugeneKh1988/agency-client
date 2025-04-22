@@ -22,3 +22,8 @@ export interface IService {
     body?: string;
     href?: string;
 }
+export interface IProject {
+    imageHref?: string;
+    title?: string;
+    description?: string;
+}
