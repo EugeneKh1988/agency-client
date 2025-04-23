@@ -27,3 +27,10 @@ export interface IProject {
     title?: string;
     description?: string;
 }
+
+export interface IPrice {
+    name?: string;
+    price?: number;
+    features?: string[];
+    purchaseLink?: string; 
+}
