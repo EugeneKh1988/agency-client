@@ -5,6 +5,7 @@ import Pricing from "@/components/Pricing";
 import Project from "@/components/Projects";
 import Services from "@/components/Services";
 import Team from "@/components/Team";
+import Testimonials from "@/components/Testimonials";
 import Works from "@/components/Works";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Choose />
       <Project />
       <Pricing />
+      <Testimonials />
     </>
   );
 }
