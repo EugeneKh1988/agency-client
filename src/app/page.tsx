@@ -1,4 +1,5 @@
 import Choose from "@/components/Choose";
+import Faq from "@/components/Faq";
 import Hero from "@/components/Hero";
 import Nav from "@/components/Nav";
 import Pricing from "@/components/Pricing";
@@ -20,6 +21,7 @@ export default function Home() {
       <Project />
       <Pricing />
       <Testimonials />
+      <Faq />
     </>
   );
 }

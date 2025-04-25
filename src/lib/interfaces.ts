@@ -34,3 +34,8 @@ export interface IPrice {
     features?: string[];
     purchaseLink?: string; 
 }
+
+export interface IFaq {
+    question?: string;
+    answer?: string;
+}
