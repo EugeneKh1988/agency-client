@@ -82,6 +82,20 @@
   --color-orange-peel-950: #452c03;
   --color-orange-peel: #F59E0B;
 
+  --color-zircon-50: #f8fbff;
+  --color-zircon-100: #e0edfe;
+  --color-zircon-200: #badbfd;
+  --color-zircon-300: #7dbdfc;
+  --color-zircon-400: #389cf8;
+  --color-zircon-500: #0e7fe9;
+  --color-zircon-600: #0262c7;
+  --color-zircon-700: #034ea1;
+  --color-zircon-800: #074385;
+  --color-zircon-900: #0c396e;
+  --color-zircon-950: #082449;
+  --color-zircon: #f8fbff;
+
+
   --spacing: 1px;
 
   --breakpoint-2xl: 90rem;
