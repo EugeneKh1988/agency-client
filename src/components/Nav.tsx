@@ -11,7 +11,7 @@ export interface NavProps {
   className?: string;
 }
 
-const headerMenu: ILink[] = [
+export const headerMenu: ILink[] = [
   {
     name: "Home",
     href: "/",
