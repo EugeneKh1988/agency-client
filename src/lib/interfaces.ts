@@ -20,7 +20,9 @@ export interface IService {
     iconName?: string;
     title?: string;
     body?: string;
+    innerText?: string;
     href?: string;
+    imageHref?: string;
 }
 export interface IProject {
     imageHref?: string;

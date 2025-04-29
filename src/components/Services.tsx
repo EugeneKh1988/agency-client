@@ -7,42 +7,54 @@ export interface ServicesProps {
   className?: string;
 }
 
-const serviceItems: IService[] = [
+export const serviceItems: IService[] = [
     {
         iconName: "chart",
         title: "Consultant Plan",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        href: "#"
+        innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
+        href: "#",
+        imageHref: "/conplan.jpg"
     },
     {
         iconName: "graph",
         title: "Design Thingking",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        href: "#"
+        innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
+        href: "#",
+        imageHref: "/design.jpg"
     },
     {
         iconName: "filter",
         title: "SEO Marketing",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        href: "#"
+        innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
+        href: "#",
+        imageHref: "/seo.jpg"
     },
     {
         iconName: "work",
         title: "Business Advisor",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        href: "#"
+        innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
+        href: "#",
+        imageHref: "/business.jpg"
     },
     {
         iconName: "heart",
         title: "Brand Personal",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        href: "#"
+        innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
+        href: "#",
+        imageHref: "/brand.jpg"
     },
     {
         iconName: "activity",
         title: "Development",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
-        href: "#"
+        innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
+        href: "#",
+        imageHref: "/dev.jpg"
     },
 ];
 
