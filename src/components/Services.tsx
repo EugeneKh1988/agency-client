@@ -13,7 +13,7 @@ export const serviceItems: IService[] = [
         title: "Consultant Plan",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
-        href: "#",
+        href: "/detail-service?active=plan",
         imageHref: "/conplan.jpg"
     },
     {
@@ -21,23 +21,23 @@ export const serviceItems: IService[] = [
         title: "Design Thingking",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
-        href: "#",
-        imageHref: "/design.jpg"
+        href: "/detail-service",
+        imageHref: "/design.jpg?active=design"
     },
     {
         iconName: "filter",
         title: "SEO Marketing",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
-        href: "#",
-        imageHref: "/seo.jpg"
+        href: "/detail-service",
+        imageHref: "/seo.jpg?active=seo"
     },
     {
         iconName: "work",
         title: "Business Advisor",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
-        href: "#",
+        href: "/detail-service?active=business",
         imageHref: "/business.jpg"
     },
     {
@@ -45,7 +45,7 @@ export const serviceItems: IService[] = [
         title: "Brand Personal",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
-        href: "#",
+        href: "/detail-service?active=brand",
         imageHref: "/brand.jpg"
     },
     {
@@ -53,7 +53,7 @@ export const serviceItems: IService[] = [
         title: "Development",
         body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
         innerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna",
-        href: "#",
+        href: "/detail-service?active=dev",
         imageHref: "/dev.jpg"
     },
 ];
