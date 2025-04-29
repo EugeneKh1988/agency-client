@@ -39,3 +39,8 @@ export interface IFaq {
     question?: string;
     answer?: string;
 }
+
+export interface IStat {
+    title?: string;
+    description?: string;
+}

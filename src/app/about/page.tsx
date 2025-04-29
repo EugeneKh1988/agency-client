@@ -1,5 +1,6 @@
 import BreadCrumbs from "@/components/BreadCrumbs";
 import Experience from "@/components/Experience";
+import Growth from "@/components/Growth";
 
 
 export default function About() {
@@ -7,6 +8,7 @@ export default function About() {
     <>
       <BreadCrumbs links={[{name: "Home", href: "/"}, {name: "About us"}]} />
       <Experience />
+      <Growth />
     </>
   );
 }
