@@ -23,6 +23,13 @@ export interface IService {
     innerText?: string;
     href?: string;
     imageHref?: string;
+    detail?: DetailService[];
+    tabName?: string;
+}
+
+interface DetailService {
+    type: "text" | "image";
+    body: string;
 }
 export interface IProject {
     imageHref?: string;
