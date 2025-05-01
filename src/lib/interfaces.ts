@@ -53,3 +53,13 @@ export interface IStat {
     title?: string;
     description?: string;
 }
+
+export interface ICollaborate {
+    title?: string;
+    body?: string;
+    imageHref?: string;
+    username?: string;
+    position?: string;
+    companySvgLogoName?: string;
+    companyImageLogoHref?: string;    
+}

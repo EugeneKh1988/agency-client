@@ -26,7 +26,7 @@ export const headerMenu: ILink[] = [
   },
   {
     name: "Testimonial",
-    href: "/testomonial",
+    href: "/testimonial",
   },
   {
     name: "Pages",
