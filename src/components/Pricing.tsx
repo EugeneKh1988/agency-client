@@ -2,12 +2,19 @@ import Container from "@/components/Container";
 import { IPrice } from "@/lib/interfaces";
 import { Button } from "@mantine/core";
 import Link from "next/link";
+import PricingItem from "./PricingItem";
 
 export interface PricingProps {
   className?: string;
 }
 
-const prices: IPrice[] = [
+export const prices: IPrice[] = [
+  {
+    name: "Individual",
+    price: 39,
+    features: ["1 Service", "Free Platform Access", "9-5PM Customer Support"],
+    purchaseLink: "#",
+  },
   {
     name: "Business",
     price: 49,
@@ -51,74 +58,8 @@ const Pricing: React.FC<PricingProps> = ({ className }) => {
         </Button>
       </div>
       <div className="flex flex-col lg:flex-row gap-24 self-center lg:self-start">
-        {prices.map((price, index) => (
-          <div
-            key={index}
-            className={`text-center pt-31 pb-47 rounded-[12px] ${
-              index % 2 == 0
-                ? "bg-mauvelous"
-                : "bg-white border border-[#E5EAF1]"
-            }`}
-          >
-            <div className="px-59">
-              <h5
-                className={`text-[20px] leading-32 tracking-[-0.03px] ${
-                  index % 2 == 0 ? "text-white" : "text-mirage"
-                }`}
-              >
-                {price.name}
-              </h5>
-              <p
-                className={`mt-2 text-[16px] leading-24 font-medium ${
-                  index % 2 == 0 ? "text-white" : ""
-                }`}
-              >
-                Customer Reach & Budget
-              </p>
-              <p
-                className={`mt-25 text-[48px] leading-60 font-bold tracking-[-2px] ${
-                  index % 2 == 0 ? "text-white" : "text-mirage"
-                }`}
-              >
-                ${price.price}
-                <span className="text-[16px] leading-26 font-normal tracking-normal">
-                  /Month
-                </span>
-              </p>
-            </div>
-            <hr
-              className={`mt-19 h-1 ${
-                index % 2 == 0 ? "text-white" : "text-[#E5EAF1]"
-              }`}
-            />
-            <div className="px-59">
-              <div
-                className={`mt-32 space-y-16 ${
-                  index % 2 == 0 ? "text-white" : ""
-                }`}
-              >
-                {price.features?.map((featureItem, f_index) => (
-                  <p
-                    className="text-[16px] leading-24 font-medium"
-                    key={f_index}
-                  >
-                    {featureItem}
-                  </p>
-                ))}
-              </div>
-              <Button
-                component={Link}
-                href="/purchase"
-                className={`mt-38 min-h-56 w-full text-[14px] leading-20 tracking-[-0.02em] font-semibold ${
-                  index % 2 == 0
-                    ? "text-mirage hover:text-mirage-800 bg-white hover:bg-amber-50"
-                    : "bg-shakespeare hover:bg-shakespeare-700 text-white"
-                }`}
-              >
-                Purchase Now
-              </Button>
-            </div>
-          </div>
+        {prices.slice(1, prices.length).map((price, index) => (
+          <PricingItem active={index % 2 == 0 ? true : false} price={price} key={index} />
         ))}
       </div>
       <div className="text-center w-full lg:hidden">
