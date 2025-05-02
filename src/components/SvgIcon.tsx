@@ -463,6 +463,24 @@ const SvgIcon = ({
         />
       </svg>
     ),
+    check: (
+      <svg
+        width="20"
+        height="21"
+        viewBox="0 0 20 21"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...classNameValue}
+      >
+        <path
+          d="M4.16699 11.1221L7.50033 14.4554L15.8337 6.12207"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
   };
 
   const Icon = icons[iconName];

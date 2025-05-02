@@ -1,7 +1,6 @@
 import BreadCrumbs from "@/components/BreadCrumbs";
-import TeamDo from "@/components/TeamDo";
-import ServiceTabs from "@/components/ServiceTabs";
 import PricingLong from "@/components/PricingLong";
+import PlanCompare from "@/components/PlanCompare";
 
 
 export default function DetailService() {
@@ -9,6 +8,7 @@ export default function DetailService() {
     <>
       <BreadCrumbs links={[{name: "Home", href: "/"}, {name: "Pricing"}]} />
       <PricingLong />
+      <PlanCompare />
     </>
   );
 }
