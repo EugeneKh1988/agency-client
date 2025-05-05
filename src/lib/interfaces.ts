@@ -63,3 +63,8 @@ export interface ICollaborate {
     companySvgLogoName?: string;
     companyImageLogoHref?: string;    
 }
+
+export interface IContact {
+    iconName?: string;
+    value?: string;
+}
