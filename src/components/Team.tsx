@@ -2,6 +2,7 @@ import Container from "@/components/Container";
 import { Carousel, CarouselSlide } from "@mantine/carousel";
 import Image from "next/image";
 import { team } from "./Hero";
+import Link from "next/link";
 
 export interface TeamProps {
   className?: string;
@@ -22,7 +23,7 @@ const Team: React.FC<TeamProps> = ({ className }) => {
       <Carousel slideSize={180} slideGap={24} align="start" className="mt-25" withControls={false}>
         {flattenTeamArray.map((teamItem, index) => (
           <CarouselSlide key={index}>
-            <div className={`hover:scale-95 relative group ${index % 2 == 0 ? 'rotate-[2.5deg]': 'rotate-[-1.2deg]'}`}>
+            <Link href="/team" className={`block hover:scale-95 relative group ${index % 2 == 0 ? 'rotate-[2.5deg]': 'rotate-[-1.2deg]'}`}>
               <Image
                 src={teamItem.imageHref}
                 width={191}
@@ -40,7 +41,7 @@ const Team: React.FC<TeamProps> = ({ className }) => {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           </CarouselSlide>
         ))}
       </Carousel>
