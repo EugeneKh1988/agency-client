@@ -544,6 +544,52 @@ const SvgIcon = ({
         </defs>
       </svg>
     ),
+    chevronDown: (
+      <svg
+        width="20"
+        height="21"
+        viewBox="0 0 20 21"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...classNameValue}
+      >
+        <path
+          d="M15.8327 7.54199L9.99935 13.3753L4.16602 7.54199"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+    upload: (
+      <svg
+        width="55"
+        height="39"
+        viewBox="0 0 55 39"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...classNameValue}
+      >
+        <path
+          d="M44.5637 15.9078C44.8819 14.9533 45.2001 13.9989 45.2001 12.7262C45.2001 5.72681 39.4732 0 32.4738 0C27.7015 0 23.2473 2.8634 21.3384 6.99943C20.3839 6.68128 19.1113 6.36312 18.1568 6.36312C13.7026 6.36312 10.2029 9.86284 10.2029 14.317C10.2029 14.9533 10.2029 15.5897 10.521 15.9078C4.79423 16.8623 0.658203 21.3165 0.658203 27.0433C0.658203 33.0882 5.7487 38.1787 11.7937 38.1787H22.9291V28.6341H13.3844L27.7015 14.317L42.0185 28.6341H32.4738V38.1787H43.6093C49.6542 38.1787 54.7447 33.0882 54.7447 27.0433C54.7447 21.3165 50.2906 16.5441 44.5637 15.9078Z"
+          fill="url(#paint0_linear_78_1264)"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_78_1264"
+            x1="27.7015"
+            y1="0"
+            x2="45.2001"
+            y2="49.3142"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#E7E7E7" />
+            <stop offset="1" stopColor="currentColor" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+      </svg>
+    ),
   };
 
   const Icon = icons[iconName];

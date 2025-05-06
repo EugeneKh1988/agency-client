@@ -71,6 +71,6 @@ export interface IContact {
 
 export interface IPosition {
     iconName?: string;
-    name?: string;
+    name: string;
     description?: string;
 }

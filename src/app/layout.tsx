@@ -4,6 +4,7 @@ import { theme } from "@/theme";
 // styles
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
+import '@mantine/dropzone/styles.css';
 import "./globals.css";
 
 export const metadata: Metadata = {

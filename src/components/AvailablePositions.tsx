@@ -6,7 +6,7 @@ export interface AvailablePositionsProps {
   className?: string;
 }
 
-const positions: IPosition[] = [
+export const positions: IPosition[] = [
   {
     iconName: "graph",
     name: "UI Designer",

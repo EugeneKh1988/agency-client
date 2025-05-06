@@ -10,7 +10,7 @@ export interface ContactFormProps {
   className?: string;
 }
 
-const contacts: IContact[] = [
+export const contacts: IContact[] = [
   {
     iconName: "pin",
     value: "2715 Ash Dr. San Jose, South Dakota 83475",
@@ -74,7 +74,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
             classNames={{
               root: "",
               input:
-                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leadeing-30 min-h-47 text-lynch",
+                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
             }}
           />
           <div className="mt-24 md:mt-32 flex flex-col md:flex-row gap-24 md:gap-30">
@@ -87,7 +87,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
               classNames={{
                 root: "w-full",
                 input:
-                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leadeing-30 min-h-47 text-lynch",
+                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
               }}
             />
             <TextInput
@@ -97,7 +97,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
               classNames={{
                 root: "w-full",
                 input:
-                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leadeing-30 min-h-47 text-lynch",
+                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
               }}
             />
           </div>
@@ -108,7 +108,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
             classNames={{
               root: "mt-24 md:mt-32",
               input:
-                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leadeing-30 min-h-140 text-lynch",
+                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-140 text-lynch",
             }}
           />
           <Button
