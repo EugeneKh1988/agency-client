@@ -1,42 +1,103 @@
 import Container from "@/components/Container";
 import { IProject, } from "@/lib/interfaces";
 import Image from "next/image";
+import Link from "next/link";
 
 export interface ProjectProps {
   className?: string;
 }
 
-const projects: IProject[] = [
-    {
-        title: "Website 1",
-        description: "Web Development",
-        imageHref: "/project1.png",
-    },
-    {
-        title: "Website 2",
-        description: "Web Development",
-        imageHref: "/project2.png",
-    },
-    {
-        title: "Website 3",
-        description: "Web Development",
-        imageHref: "/project3.png",
-    },
-    {
-        title: "Website 4",
-        description: "Web Development",
-        imageHref: "/project4.png",
-    },
-    {
-        title: "Website 5",
-        description: "Web Development",
-        imageHref: "/project5.png",
-    },
-    {
-        title: "Website 6",
-        description: "Web Development",
-        imageHref: "/project6.png",
-    },
+export const projects: IProject[] = [
+  {
+    id: 1,
+    title: "Website 1",
+    description: "Web Development",
+    imageHref: "/project1.png",
+    client: "Schoolmy Agency",
+    duration: "2 month",
+    details: [
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "image", value: "/project1.png"},
+      {type: "title", value: "Challenge This Project"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+    ],
+  },
+  {
+    id: 2,
+    title: "Website 2",
+    description: "Web Development",
+    imageHref: "/project2.png",
+    client: "Schoolmy Agency",
+    duration: "2 month",
+    details: [
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "image", value: "/project2.png"},
+      {type: "title", value: "Challenge This Project"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+    ],
+  },
+  {
+    id: 3,
+    title: "Website 3",
+    description: "Web Development",
+    imageHref: "/project3.png",
+    client: "Schoolmy Agency",
+    duration: "2 month",
+    details: [
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "image", value: "/project3.png"},
+      {type: "title", value: "Challenge This Project"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+    ],
+  },
+  {
+    id: 4,
+    title: "Website 4",
+    description: "Web Development",
+    imageHref: "/project4.png",
+    client: "Schoolmy Agency",
+    duration: "2 month",
+    details: [
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "image", value: "/project4.png"},
+      {type: "title", value: "Challenge This Project"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+    ],
+  },
+  {
+    id: 5,
+    title: "Website 5",
+    description: "Web Development",
+    imageHref: "/project5.png",
+    client: "Schoolmy Agency",
+    duration: "2 month",
+    details: [
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "image", value: "/project5.png"},
+      {type: "title", value: "Challenge This Project"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+    ],
+  },
+  {
+    id: 6,
+    title: "Website 6",
+    description: "Web Development",
+    imageHref: "/project6.png",
+    client: "Schoolmy Agency",
+    duration: "2 month",
+    details: [
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "image", value: "/project6.png"},
+      {type: "title", value: "Challenge This Project"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+      {type: "text", value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam, quis nostrud exercitation dolore magna"},
+    ],
+  },
 ];
 
 const Project: React.FC<ProjectProps> = ({ className }) => {
@@ -52,7 +113,7 @@ const Project: React.FC<ProjectProps> = ({ className }) => {
       </h2>
       <div className="mt-41 md:mt-67 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-20">
         {projects.map((projectItem, index) => (
-          <div className={`relative group ${index % 2 == 0 ? 'rotate-[0.25deg]': 'rotate-[-2.25deg]'}`} key={index}>
+          <Link href={`/pages/${projectItem.id}`} className={`relative group ${index % 2 == 0 ? 'rotate-[0.25deg]': 'rotate-[-2.25deg]'}`} key={index}>
             <Image
               src={projectItem.imageHref || "#"}
               width={381}
@@ -70,7 +131,7 @@ const Project: React.FC<ProjectProps> = ({ className }) => {
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </Container>

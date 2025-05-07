@@ -32,9 +32,19 @@ interface DetailService {
     body: string;
 }
 export interface IProject {
+    id: number;
     imageHref?: string;
     title?: string;
     description?: string;
+    client?: string;
+    duration?: string;
+    projectHref?: string;
+    details?: IProjectDetail[];
+}
+
+interface IProjectDetail {
+    type: "text" | "image" | "title",
+    value: string;
 }
 
 export interface IPrice {
