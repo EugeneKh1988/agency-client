@@ -7,21 +7,60 @@ export interface FaqProps {
   className?: string;
 }
 
-const answers: IFaq[] = [
+export const answers: IFaq[] = [
   {
     question: "Lorem ipsum dolor sit amet, consect etur adipiscing elit 1",
     answer:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor for the main condimentum commodo tincidunt sit dictumst. Eu placerat to a arcu at sem vitae eros, purus nonprofit organizations.",
+    group: "service",
   },
   {
     question: "Lorem ipsum dolor sit amet, consect etur adipiscing elit 2",
     answer:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor for the main condimentum commodo tincidunt sit dictumst. Eu placerat to a arcu at sem vitae eros, purus nonprofit organizations.",
+    group: "service",
   },
   {
     question: "Lorem ipsum dolor sit amet, consect etur adipiscing elit 3",
     answer:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor for the main condimentum commodo tincidunt sit dictumst. Eu placerat to a arcu at sem vitae eros, purus nonprofit organizations.",
+    group: "service",
+  },
+  {
+    question: "Lorem ipsum dolor sit amet, consect etur adipiscing elit 4",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor for the main condimentum commodo tincidunt sit dictumst. Eu placerat to a arcu at sem vitae eros, purus nonprofit organizations.",
+    group: "contract",
+  },
+  {
+    question: "Lorem ipsum dolor sit amet, consect etur adipiscing elit 5",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor for the main condimentum commodo tincidunt sit dictumst. Eu placerat to a arcu at sem vitae eros, purus nonprofit organizations.",
+    group: "contract",
+  },
+  {
+    question: "Lorem ipsum dolor sit amet, consect etur adipiscing elit 6",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor for the main condimentum commodo tincidunt sit dictumst. Eu placerat to a arcu at sem vitae eros, purus nonprofit organizations.",
+    group: "contract",
+  },
+  {
+    question: "Lorem ipsum dolor sit amet, consect etur adipiscing elit 7",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor for the main condimentum commodo tincidunt sit dictumst. Eu placerat to a arcu at sem vitae eros, purus nonprofit organizations.",
+    group: "payment",
+  },
+  {
+    question: "Lorem ipsum dolor sit amet, consect etur adipiscing elit 8",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor for the main condimentum commodo tincidunt sit dictumst. Eu placerat to a arcu at sem vitae eros, purus nonprofit organizations.",
+    group: "payment",
+  },
+  {
+    question: "Lorem ipsum dolor sit amet, consect etur adipiscing elit 9",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat, tempor for the main condimentum commodo tincidunt sit dictumst. Eu placerat to a arcu at sem vitae eros, purus nonprofit organizations.",
+    group: "payment",
   },
 ];
 
@@ -44,7 +83,7 @@ const Faq: React.FC<FaqProps> = ({ className }) => {
   const classNameValue = className ? `${className}` : "";
 
   const items = () => {
-    return answers.map((faqItem, index) => (
+    return answers.slice(0, 3).map((faqItem, index) => (
       <AccordionItem key={index} value={faqItem?.question || `${index}`} className="border-b border-b-[#E5EAF1]">
         <AccordionControl className="text-[18px] leading-24 tracking-[-0.5px] font-bold text-mirage">{faqItem?.question || ""}</AccordionControl>
         <AccordionPanel className="text-[18px] leading-32">{faqItem?.answer || ""}</AccordionPanel>

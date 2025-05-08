@@ -24,6 +24,10 @@ const links: ILink[] = [
     name: "Contact us",
     href: "/contact",
   },
+  {
+    name: "FAQ",
+    href: "/faq",
+  },
 ];
 
 const Footer: React.FC<FooterProps> = ({ className }) => {

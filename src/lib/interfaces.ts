@@ -57,6 +57,7 @@ export interface IPrice {
 export interface IFaq {
     question?: string;
     answer?: string;
+    group?: string;
 }
 
 export interface IStat {

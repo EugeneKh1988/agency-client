@@ -102,7 +102,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
             />
           </div>
           <Textarea
-            placeholder="Your Quenstions"
+            placeholder="Your Questions"
             key={form.key("question")}
             {...form.getInputProps("question")}
             classNames={{

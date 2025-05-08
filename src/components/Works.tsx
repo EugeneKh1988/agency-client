@@ -18,7 +18,7 @@ const Works: React.FC<WorksProps> = ({ className }) => {
         This is How We Works
       </h2>
       <div className="text-center">
-      <Image src={preview} alt="Video preview" className="block mx-auto" />
+        <Image src={preview} alt="Video preview" className="block mx-auto" />
       </div>
     </Container>
   );
