@@ -85,3 +85,8 @@ export interface IPosition {
     name: string;
     description?: string;
 }
+
+export interface IBlock {
+    type: "text" | "title" | "subtitle";
+    value: string;
+}
