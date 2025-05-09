@@ -14,7 +14,7 @@ export interface FooterProps {
 const links: ILink[] = [
   {
     name: "Privacy Policy",
-    href: "/privacy",
+    href: "/policy",
   },
   {
     name: "Terms & Conditions",
