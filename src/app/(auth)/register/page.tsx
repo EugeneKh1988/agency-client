@@ -5,20 +5,17 @@ import SvgIcon from "@/components/SvgIcon";
 import { useAuth } from "@/hooks/auth";
 import { ILoginError } from "@/lib/interfaces";
 import { Alert, Button, Checkbox, TextInput } from "@mantine/core";
-import { isEmail, useForm } from "@mantine/form";
+import { hasLength, isEmail, matchesField, useForm } from "@mantine/form";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const [shown, viewPassword] = useState(false);
-  const router = useRouter();
 
   const [errors, setErrors] = useState<ILoginError>({});
-  const [status, setStatus] = useState<string | null>(null);
 
-  const { login } = useAuth({
+  const { register } = useAuth({
     middleware: "guest",
     redirectIfAuthenticated: "/dashboard",
   });
@@ -26,29 +23,31 @@ export default function LoginPage() {
   // form data
   const form = useForm({
     mode: "uncontrolled",
-    initialValues: { email: "", password: "", remember: false },
+    initialValues: { name: "", email: "", password: "", password_confirmation: "" },
     validate: {
       email: isEmail("Invalid email"),
       password: (value) =>
-        value.trim().length == 0 ? "Must not be empty" : null,
+        value.trim().length < 8 ? "Must be at least 8 characters" : null,
+      name: hasLength({ min: 3 }, "Must be at least 3 characters"),
+      password_confirmation: matchesField("password", "Passwords are not the same"),
     },
   });
 
-  const handleLogin = (values: typeof form.values) => {
-    // login process
-    login({
-        setErrors,
-        setStatus,
+  const handleRegister = (values: typeof form.values) => {
+    // register process
+    register({
+        name: values.name,
         email: values.email,
         password: values.password,
-        remember: values.remember,
+        password_confirmation: values.password_confirmation,
+        setErrors,
     });
   };
 
   const showErrors = () => {
-    if (errors.email || errors.name || errors.password) {
+    if (errors.email || errors.name || errors.password || errors.password_confirmation) {
       return (
-        <Alert variant="outline" color="red" title="Login error" className="mt-12">
+        <Alert variant="outline" color="red" title="Register error" className="mt-12">
           <ul className="text-mirage">
             {errors.email?.map((item, index) => (
               <li key={index}>{item}</li>
@@ -59,6 +58,9 @@ export default function LoginPage() {
             {errors.name?.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
+            {errors.password_confirmation?.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
           </ul>
         </Alert>
       );
@@ -66,28 +68,33 @@ export default function LoginPage() {
     return null;
   };
 
-  /* useEffect(() => {
-    if (router.reset?.length > 0 && errors.length === 0) {
-      setStatus(atob(router.reset));
-    } else {
-      setStatus(null);
-    }
-  }); */
-
   return (
     <Container className="mt-100 md:mt-150">
       <div className="max-w-400 mx-auto">
         <p className="text-[14px] leading-18 text-mirage">
-          Enter your username and password to login or <Link href="/register" className="text-shakespeare">create new account</Link>
+          Enter your email and password to register or{" "}
+          <Link href="/login" className="text-shakespeare">
+            login
+          </Link>
         </p>
-        <form className="mt-14" onSubmit={form.onSubmit(handleLogin)}>
+        <form className="mt-14" onSubmit={form.onSubmit(handleRegister)}>
           <TextInput
-            placeholder="Email"
+            placeholder="Username"
+            key={form.key("name")}
+            {...form.getInputProps("name")}
+            classNames={{
+              input:
+                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+            }}
+          />
+          <TextInput
+            placeholder="Enter your email address"
             key={form.key("email")}
             {...form.getInputProps("email")}
             classNames={{
               input:
                 "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+              root: "mt-17",
             }}
           />
           <TextInput
@@ -112,30 +119,25 @@ export default function LoginPage() {
               )
             }
           />
-          <div className="flex justify-between sm:items-center mt-14 flex-wrap sm:flex-nowrap gap-10">
-            <Checkbox
-              label="Remember me"
-              key={form.key("remember")}
-              {...form.getInputProps("remember")}
-              classNames={{label: "text-[14px] leading-16"}}
-            />
-            <Link
-              href="/forgot-password"
-              className="text-[14px] leading-16"
-            >
-              Forgot Password?
-            </Link>
-          </div>
-          {
-            showErrors() 
-          }
+          <TextInput
+            placeholder="Confirm Password"
+            type={shown ? "text" : "password"}
+            key={form.key("password_confirmation")}
+            {...form.getInputProps("password_confirmation")}
+            classNames={{
+              input:
+                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+              root: "mt-17",
+            }}
+          />
+          {showErrors()}
           <Button
             type="submit"
             classNames={{
               root: "mt-27 min-h-48 text-[14px] leading-20 font-semibold bg-shakespeare hover:bg-shakespeare-700 text-white w-full",
             }}
           >
-            Login
+            Register
           </Button>
         </form>
       </div>

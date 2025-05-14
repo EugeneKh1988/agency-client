@@ -23,17 +23,23 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: st
 
     const register = async ({
       setErrors,
-      ...props
+      email,
+      name,
+      password,
+      password_confirmation
     }: {
-      setErrors: (errors: ILoginError[]) => void;
-      props: { [x: string]: string | number | boolean };
+      setErrors: Dispatch<SetStateAction<ILoginError>>;
+      email: string;
+      name: string;
+      password: string;
+      password_confirmation: string;
     }) => {
       await csrf();
 
-      setErrors([]);
+      setErrors({});
 
       axios
-        .post("/register", props)
+        .post("/register", {name, email, password, password_confirmation})
         .then(() => mutate())
         .catch((error) => {
           if (error.response.status !== 422) throw error;
@@ -75,13 +81,13 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: st
       setStatus,
       email,
     }: {
-      setErrors: (errors: ILoginError[]) => void;
+      setErrors: Dispatch<SetStateAction<ILoginError>>;
       setStatus: (status: string | null) => void;
       email: string;
     }) => {
       await csrf();
 
-      setErrors([]);
+      setErrors({});
       setStatus(null);
 
       axios
@@ -99,13 +105,13 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: st
       setStatus,
       ...props
     }: {
-      setErrors: (errors: ILoginError[]) => void;
+      setErrors: Dispatch<SetStateAction<ILoginError>>;
       setStatus: (status: string | null) => void;
       props: { [x: string]: string | number | boolean };
     }) => {
       await csrf();
 
-      setErrors([]);
+      setErrors({});
       setStatus(null);
 
       axios

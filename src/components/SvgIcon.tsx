@@ -627,6 +627,82 @@ const SvgIcon = ({
         />
       </svg>
     ),
+    show: (
+      <svg
+        id="Show"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...classNameValue}
+      >
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M15.1642 12.0521C15.1642 13.7981 13.7482 15.2141 12.0022 15.2141C10.2562 15.2141 8.84021 13.7981 8.84021 12.0521C8.84021 10.3051 10.2562 8.89014 12.0022 8.89014C13.7482 8.89014 15.1642 10.3051 15.1642 12.0521Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M2.75024 12.0521C2.75024 15.3321 6.89224 19.3541 12.0022 19.3541C17.1112 19.3541 21.2542 15.3351 21.2542 12.0521C21.2542 8.76912 17.1112 4.75012 12.0022 4.75012C6.89224 4.75012 2.75024 8.77212 2.75024 12.0521Z"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></path>
+      </svg>
+    ),
+    hide: (
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        {...classNameValue}
+      >
+        <path
+          d="M5.34984 14.7748C3.4915 13.5582 2.2915 11.7248 2.2915 10.1165C2.2915 7.38316 5.7415 4.03316 9.99984 4.03316C11.7415 4.03316 13.3582 4.59149 14.6582 5.45816"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M16.5414 7.17517C17.2839 8.11684 17.7164 9.1585 17.7164 10.1168C17.7164 12.8502 14.2581 16.2002 9.99977 16.2002C9.24144 16.2002 8.50061 16.0918 7.80811 15.9002"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M8.13804 11.9725C7.6422 11.4817 7.3647 10.8125 7.3672 10.115C7.36387 8.66083 8.54054 7.47916 9.99554 7.47666C10.6955 7.47499 11.3672 7.75249 11.8622 8.24749"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12.5912 10.5826C12.3962 11.6592 11.5537 12.5034 10.4771 12.7009"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M16.5762 3.54158L3.43115 16.6866"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
   };
 
   const Icon = icons[iconName];
