@@ -90,3 +90,9 @@ export interface IBlock {
     type: "text" | "title" | "subtitle" | "list";
     value: string | string[];
 }
+
+export interface ILoginError {
+    name?: string[];
+    email?: string[];
+    password?: string[];
+}
