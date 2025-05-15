@@ -4,20 +4,27 @@ import { Dispatch, SetStateAction, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { ILoginError } from '@/lib/interfaces';
 
-export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: string, redirectIfAuthenticated: string}) => {
+export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: string, redirectIfAuthenticated?: string}) => {
     const router = useRouter();
     const params = useParams();
 
-    const { data: user, error, mutate } = useSWR('/api/user', () =>
+    const {
+      data: user,
+      error,
+      mutate,
+    } = useSWR(
+      "/api/user",
+      () =>
         axios
-            .get('/api/user')
-            .then(res => res.data)
-            .catch(error => {
-                if (error.response.status !== 409) throw error;
+          .get("/api/user")
+          .then((res) => res.data)
+          .catch((error) => {
+            if (error.response.status !== 409) throw error;
 
-                router.push('/verify-email');
-            }),
-    )
+            router.push("/verify-email");
+          }),
+      { shouldRetryOnError: false }
+    );
 
     const csrf = () => axios.get('/sanctum/csrf-cookie');
 
@@ -136,7 +143,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: st
         if (!error) {
             await axios.post('/logout').then(() => mutate())
         }
-
+        
+        // go to login page
         window.location.pathname = '/login';
     }
 
@@ -149,10 +157,10 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: st
         
         if (
             window.location.pathname === '/verify-email' &&
-            user?.email_verified_at
+            user?.email_verified_at && redirectIfAuthenticated
         )
             router.push(redirectIfAuthenticated)
-        if (middleware === 'auth' && error) logout()
+        if (user && error) logout();
     }, [user, error])
 
     return {

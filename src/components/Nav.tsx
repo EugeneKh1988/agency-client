@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ILink } from "@/lib/interfaces";
 import Logo from "../../public/Logo.svg";
 import { Button } from "@mantine/core";
+import Login from "./Login";
 
 export interface NavProps {
   activeMenuName: string;
@@ -65,14 +66,17 @@ const Nav: React.FC<NavProps> = ({ className, activeMenuName }) => {
               </li>
             ))}
           </ul>
-          <Button
-            variant="filled"
-            component={Link}
-            href="/contact"
-            className="hidden lg:block min-h-44 px-18 text-black-haze bg-mauvelous hover:bg-mauvelous-600 text-[14px] leading-20 tracking-[-0.02em] font-semibold"
-          >
-            Contact Us
-          </Button>
+          <div className="hidden lg:flex gap-10 lg:items-center">
+            <Button
+              variant="filled"
+              component={Link}
+              href="/contact"
+              className="min-h-44 px-18 text-black-haze bg-mauvelous hover:bg-mauvelous-600 text-[14px] leading-20 tracking-[-0.02em] font-semibold"
+            >
+              Contact Us
+            </Button>
+            <Login mode="nav" />
+          </div>
           {/*for mobile devices */}
           <NavMenu
             header={headerMenu}

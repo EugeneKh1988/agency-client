@@ -6,6 +6,7 @@ import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import '@mantine/dropzone/styles.css';
 import "./globals.css";
+import { GlobalContextProvider } from "@/context/store";
 
 export const metadata: Metadata = {
   title: "Creative agency site",
@@ -23,7 +24,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}><GlobalContextProvider>{children}</GlobalContextProvider></MantineProvider>
       </body>
     </html>
   );

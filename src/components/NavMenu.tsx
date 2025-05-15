@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ILink } from "@/lib/interfaces";
 import Logo from "../../public/Logo.svg";
 import Image from "next/image";
+import Login from "./Login";
 
 interface NavMenuProps extends NavProps {
   header: ILink[];
@@ -57,14 +58,17 @@ const NavMenu: React.FC<NavMenuProps> = ({
                 </Link>
               ))}
             </div>
-            <Button
-              variant="filled"
-              component={Link}
-              href="/contact"
-              className="mt-20 min-h-44 px-18 text-black-haze bg-mauvelous hover:bg-mauvelous-600 text-[14px] leading-20 tracking-[-0.02em] font-semibold"
-            >
-              Contact Us
-            </Button>
+            <div className="mt-20 flex flex-wrap gap-10 items-center">
+              <Button
+                variant="filled"
+                component={Link}
+                href="/contact"
+                className="min-h-44 px-18 text-black-haze bg-mauvelous hover:bg-mauvelous-600 text-[14px] leading-20 tracking-[-0.02em] font-semibold"
+              >
+                Contact Us
+              </Button>
+              <Login mode="navmenu" />
+            </div>
           </Drawer.Body>
         </Drawer.Content>
       </Drawer.Root>
