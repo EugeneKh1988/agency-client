@@ -4,6 +4,7 @@ import { useAuth } from "@/hooks/auth";
 import { ActionIcon, Button, Menu, MenuDropdown, MenuItem, MenuTarget } from "@mantine/core";
 import SvgIcon from "./SvgIcon";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface LoginProps {
   mode: "nav" | "navmenu";
