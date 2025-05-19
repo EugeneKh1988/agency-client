@@ -4,52 +4,57 @@ import Container from "@/components/Container";
 import SvgIcon from "@/components/SvgIcon";
 import { useAuth } from "@/hooks/auth";
 import { ILoginError } from "@/lib/interfaces";
-import { Alert, Button, Checkbox, TextInput } from "@mantine/core";
-import { isEmail, useForm } from "@mantine/form";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Alert, Button, TextInput } from "@mantine/core";
+import { isEmail, matchesField, useForm } from "@mantine/form";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 
-export default function LoginPage() {
-  const [shown, viewPassword] = useState(false);
+export default function ResetPasswordPage() {
+  const [errors, setErrors] = useState<ILoginError>({});
+  const [status, setStatus] = useState<string | null>(null);
   // url query params
   const searchParams = useSearchParams();
 
-  const [errors, setErrors] = useState<ILoginError>({});
-  const [status, setStatus] = useState<string | null>(null);
+  const [shown, viewPassword] = useState(false);
 
-  const { login } = useAuth({
+  const { resetPassword } = useAuth({
     middleware: "guest",
-    redirectIfAuthenticated: "/dashboard",
   });
 
   // form data
   const form = useForm({
     mode: "uncontrolled",
-    initialValues: { email: "", password: "", remember: false },
+    initialValues: {
+      email: "",
+      password: "",
+      password_confirmation: "",
+    },
     validate: {
       email: isEmail("Invalid email"),
       password: (value) =>
-        value.trim().length == 0 ? "Must not be empty" : null,
+        value.trim().length < 8 ? "Must be at least 8 characters" : null,
+      password_confirmation: matchesField(
+        "password",
+        "Passwords are not the same"
+      ),
     },
   });
 
-  const handleLogin = (values: typeof form.values) => {
-    // login process
-    login({
-        setErrors,
-        setStatus,
-        email: values.email,
-        password: values.password,
-        remember: values.remember,
+  const handleResetPassword = (values: typeof form.values) => {
+    resetPassword({
+      email: values.email,
+      password: values.password,
+      password_confirmation: values.password_confirmation,
+      setErrors,
+      setStatus,
     });
   };
 
   const showErrors = () => {
-    if (errors.email || errors.name || errors.password) {
+    if (errors.email || errors.password || errors.password_confirmation) {
       return (
-        <Alert variant="outline" color="red" title="Login error" className="mt-12">
+        <Alert variant="outline" color="red" title="Register error" className="mt-12">
           <ul className="text-mirage">
             {errors.email?.map((item, index) => (
               <li key={index}>{item}</li>
@@ -57,7 +62,7 @@ export default function LoginPage() {
             {errors.password?.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
-            {errors.name?.map((item, index) => (
+            {errors.password_confirmation?.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
@@ -67,24 +72,16 @@ export default function LoginPage() {
     return null;
   };
 
-  // read reset query after password reset
+  // set email field by email url query
   useEffect(() => {
-    const reset = searchParams.get("reset") || "";
-    if (reset && reset.length > 0 && Object.keys(errors).length === 0) {
-      setStatus(atob(reset));
-    } else {
-      setStatus(null);
-    }
-  });
+    form.setValues({email: searchParams.get("email") || ""});
+  }, [searchParams.get("email")]);
 
   return (
     <Container className="mt-100 md:mt-150">
       <div className="max-w-400 mx-auto">
-        {status && <p className="text-[14px] leading-18 text-mirage mb-14 font-medium">{status}</p>}
-        <p className="text-[14px] leading-18 text-mirage">
-          Enter your username and password to login or <Link href="/register" className="text-shakespeare">create new account</Link>
-        </p>
-        <form className="mt-14" onSubmit={form.onSubmit(handleLogin)}>
+        {status && <p className="text-[14px] leading-18 text-mirage">{status}</p>}
+        <form className="mt-14" onSubmit={form.onSubmit(handleResetPassword)}>
           <TextInput
             placeholder="Email"
             key={form.key("email")}
@@ -116,30 +113,25 @@ export default function LoginPage() {
               )
             }
           />
-          <div className="flex justify-between sm:items-center mt-14 flex-wrap sm:flex-nowrap gap-10">
-            <Checkbox
-              label="Remember me"
-              key={form.key("remember")}
-              {...form.getInputProps("remember")}
-              classNames={{label: "text-[14px] leading-16"}}
-            />
-            <Link
-              href="/forgot-password"
-              className="text-[14px] leading-16"
-            >
-              Forgot Password?
-            </Link>
-          </div>
-          {
-            showErrors() 
-          }
+          <TextInput
+            placeholder="Confirm Password"
+            type={shown ? "text" : "password"}
+            key={form.key("password_confirmation")}
+            {...form.getInputProps("password_confirmation")}
+            classNames={{
+              input:
+                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+              root: "mt-17",
+            }}
+          />
+          {showErrors()}
           <Button
             type="submit"
             classNames={{
               root: "mt-27 min-h-48 text-[14px] leading-20 font-semibold bg-shakespeare hover:bg-shakespeare-700 text-white w-full",
             }}
           >
-            Login
+            Reset Password
           </Button>
         </form>
       </div>
