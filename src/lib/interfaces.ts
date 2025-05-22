@@ -96,4 +96,12 @@ export interface ILoginError {
     email?: string[];
     password?: string[];
     password_confirmation?: string[];
+    current_password?: string[];
+}
+
+export interface IUser {
+    id?: number;
+    name?: string;
+    email?: string;
+    email_verified_at?: string;
 }

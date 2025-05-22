@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import axios from '@/lib/axios';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { ILoginError } from '@/lib/interfaces';
+import { ILoginError, IUser } from '@/lib/interfaces';
 
 export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: string, redirectIfAuthenticated?: string}) => {
     const router = useRouter();
@@ -12,7 +12,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: st
       data: user,
       error,
       mutate,
-    } = useSWR(
+    } = useSWR<IUser>(
       "/api/user",
       () =>
         axios
@@ -141,7 +141,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: st
         axios
             .post('/email/verification-notification')
             .then(response => setStatus(response.data.status))
-    }
+    };
 
     const logout = async () => {
         if (!error) {
@@ -150,7 +150,56 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: st
         
         // go to login page
         window.location.pathname = '/login';
-    }
+    };
+
+    // admin is a user with id equels 1
+    const isAdmin = () => {
+      if(user && user.id === 1) {
+        return true;
+      }
+      return false;
+    };
+
+    // update user data
+    const updateUser = async ({
+      setErrors,
+      email,
+      name,
+      current_password,
+      password,
+      password_confirmation,
+      setStatus,
+    }: {
+      setErrors: Dispatch<SetStateAction<ILoginError>>;
+      setStatus: (status: string | null) => void;
+      email: string;
+      name: string;
+      current_password: string;
+      password: string;
+      password_confirmation: string;
+    }) => {
+      await csrf();
+
+      setErrors({});
+      setStatus(null);
+
+      const params:{name?: string; email?: string; current_password?: string; password?: string; password_confirmation?: string} = {};
+      if(name) params.name = name; 
+      // add email when it different
+      if(email && user?.email && user.email != email) params.email = email;
+      if(current_password) params.current_password = current_password; 
+      if(password) params.password = password;
+      if(password_confirmation) params.password_confirmation = password_confirmation;  
+
+      axios
+        .post("/api/user", params)
+        .then((response) => {setStatus(response.data.status);  return mutate();})
+        .catch((error) => {
+          if (error.response.status !== 422) throw error;
+
+          setErrors(error.response.data.errors);
+        });
+    };
 
     useEffect(() => {
         if (middleware === 'guest' && redirectIfAuthenticated && user)
@@ -175,5 +224,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated }: {middleware: st
         resetPassword,
         resendEmailVerification,
         logout,
+        isAdmin,
+        updateUser,
     }
 }
