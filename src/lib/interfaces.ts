@@ -105,3 +105,19 @@ export interface IUser {
     email?: string;
     email_verified_at?: string;
 }
+
+export interface ITeam {
+    id?: number;
+    name?: string;
+    imageHref?: string;
+    position?: string;
+}
+
+export interface ITeamError {
+    id?: string[];
+    name?: string[];
+    position?: string[];
+    photo?: string[];
+    count?: string[];
+    skip?: string[];
+}

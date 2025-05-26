@@ -9,6 +9,7 @@ import AccountDetails from "./AccountDetails";
 
 const tabsItems = [
   {title: "Account details", value: "account-details", isAdminTab: false },
+  {title: "Team", value: "team", isAdminTab: true },
 ];
 
 export default function DashboardPage() {
