@@ -59,7 +59,7 @@ const AccountDetails: React.FC<AccountDetailsProps> = ({
 
   // set initial values
   useEffect(() => {
-    console.log(user);
+    //console.log(user);
     if(user && user.name && !form.getValues().name) {
         form.setValues({name: user.name});
     }

@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 import axios from '@/lib/axios';
 import { Dispatch, SetStateAction, } from 'react';
-import { ITeamError, ITeam, } from '@/lib/interfaces';
+import { ITeamError, ITeam, ICreateWorker, IUpdateWorker, IDeleteWorker, } from '@/lib/interfaces';
 
 export const useTeams = ({ count = 10, skip = 0 }: {count: number, skip: number}) => {
 
@@ -52,25 +52,20 @@ export const useTeams = ({ count = 10, skip = 0 }: {count: number, skip: number}
       name,
       position,
       photo,
-    }: {
-      setErrors: Dispatch<SetStateAction<ITeamError>>;
-      setStatus: Dispatch<SetStateAction<string | null>>;
-      name: string;
-      position: string;
-      photo: File;
-    }) => {
+    }: ICreateWorker) => {
       await csrf();
 
       setErrors({});
       setStatus(null);
 
-      const params:{name?: string; position?: string; photo?: File;} = {};
-      if(name) params.name = name; 
-      if(position) params.position = position;
-      if(photo) params.photo = photo; 
+      // set params
+      const formData = new FormData();
+      if(name) formData.append('name', name);
+      if(position) formData.append('position', position);
+      if(photo) formData.append('photo', photo); 
 
       axios
-        .post("/api/teams", params)
+        .post("/api/teams", formData, {headers: {'Content-Type': 'multipart/form-data'}})
         .then((response) => { setStatus(response.data.status); return mutate(); })
         .catch((error) => {
           if (error.response.status !== 422) throw error;
@@ -79,34 +74,27 @@ export const useTeams = ({ count = 10, skip = 0 }: {count: number, skip: number}
         });
     };
 
-    const edit = async ({
+    const update = async ({
       setErrors,
       setStatus,
       id,
       name,
       position,
       photo,
-    }: {
-      setErrors: Dispatch<SetStateAction<ITeamError>>;
-      setStatus: (status: string | null) => void;
-      id: number;
-      name: string;
-      position: string;
-      photo: File;
-    }) => {
+    }: IUpdateWorker) => {
       await csrf();
 
       setErrors({});
       setStatus(null);
 
       // set params
-      const params:{name?: string; position?: string; photo?: File;} = {};
-      if(name) params.name = name; 
-      if(position) params.position = position;
-      if(photo) params.photo = photo; 
+      const formData = new FormData();
+      if(name) formData.append('name', name);
+      if(position) formData.append('position', position);
+      if(photo) formData.append('photo', photo); 
 
       axios
-        .post(`/api/teams/${id}?_method=PUT`, params)
+        .post(`/api/teams/${id}?_method=PUT`, formData, {headers: {'Content-Type': 'multipart/form-data'}})
         .then((response) => { setStatus(response.data.status); return mutate(); })
         .catch((error) => {
           if (error.response.status !== 422) throw error;
@@ -119,11 +107,7 @@ export const useTeams = ({ count = 10, skip = 0 }: {count: number, skip: number}
       setErrors,
       setStatus,
       id,
-    }: {
-      setErrors: Dispatch<SetStateAction<ITeamError>>;
-      setStatus: (status: string | null) => void;
-      id: number,
-    }) => {
+    }: IDeleteWorker) => {
       await csrf();
 
       setErrors({});
@@ -143,7 +127,7 @@ export const useTeams = ({ count = 10, skip = 0 }: {count: number, skip: number}
         team,
         worker,
         create,
-        edit,
+        update,
         deleteWorker,
     }
 }

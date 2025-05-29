@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface ILink {
     name?: string;
     href?: string; 
@@ -106,11 +108,16 @@ export interface IUser {
     email_verified_at?: string;
 }
 
-export interface ITeam {
+export interface ITeamItem {
     id?: number;
     name?: string;
     imageHref?: string;
     position?: string;
+}
+
+export interface ITeam {
+    workers: ITeamItem[];
+    count: number;
 }
 
 export interface ITeamError {
@@ -120,4 +127,27 @@ export interface ITeamError {
     photo?: string[];
     count?: string[];
     skip?: string[];
+}
+
+export interface ICreateWorker {
+    setErrors: Dispatch<SetStateAction<ITeamError>>;
+    setStatus: Dispatch<SetStateAction<string | null>>;
+    name: string;
+    position: string;
+    photo: File | null;
+}
+
+export interface IUpdateWorker {
+    setErrors: Dispatch<SetStateAction<ITeamError>>;
+    setStatus: (status: string | null) => void;
+    id: number;
+    name: string;
+    position: string;
+    photo: File | null;
+}
+
+export interface IDeleteWorker {
+    setErrors: Dispatch<SetStateAction<ITeamError>>;
+    setStatus: (status: string | null) => void;
+    id: number;
 }

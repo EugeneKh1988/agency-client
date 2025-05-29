@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/auth";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@mantine/core";
 import React from "react";
 import AccountDetails from "./AccountDetails";
+import AccountTeam from "./AccountTeam";
 
 const tabsItems = [
   {title: "Account details", value: "account-details", isAdminTab: false },
@@ -22,6 +23,9 @@ export default function DashboardPage() {
   const componentSwitch = (value: string, isAdminTab: boolean) => {
     if(value == "account-details") {
       return <AccountDetails isAdminTab={isAdminTab} />
+    }
+    if(value == "team") {
+      return <AccountTeam isAdminTab={isAdminTab} />
     }
     return null;
   };
