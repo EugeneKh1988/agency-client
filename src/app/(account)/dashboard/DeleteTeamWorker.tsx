@@ -2,6 +2,7 @@ import { Alert, Button, Modal, ScrollArea, } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { IDeleteWorker, ITeamError } from "@/lib/interfaces";
 import { useMediaQuery } from "@mantine/hooks";
+import { revalidateTeam } from "@/lib/revalidate";
 
 interface DeleteTeamWorkerProps {
   className?: string;
@@ -76,7 +77,10 @@ const DeleteTeamWorker: React.FC<DeleteTeamWorkerProps> = ({
         setErrors,
         setStatus,
       });
+      // disabled delete button
       setDisabled(true);
+      // revalidate cache
+      await revalidateTeam();
     } catch (err) {
       setDisabled(false);
     }

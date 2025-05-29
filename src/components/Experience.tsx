@@ -1,15 +1,24 @@
 import Container from "@/components/Container";
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@mantine/core";
-import { team } from "./Hero";
+import { ITeam, ITeamItem } from "@/lib/interfaces";
+import LaravelImage from "./LaravelImage";
+import { to2DArray } from "@/lib/utils";
 
 export interface ExperienceProps {
   className?: string;
 }
 
-const Experience: React.FC<ExperienceProps> = ({ className, }) => {
+const Experience: React.FC<ExperienceProps> = async ({ className, }) => {
   const classNameValue = className ? `${className}` : "";
+
+  const teamResponse = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/teams?skip=0&take=6`,
+    { next: { tags: ["team"] } }
+  );
+  const team: ITeam = await teamResponse.json();
+  const workers: ITeamItem[] = team && team.workers ? team.workers : [];
+  const workers2D: ITeamItem[][] = to2DArray(workers);
 
   return (
     <Container className={`mt-100 xl:mt-150 ${classNameValue}`}>
@@ -46,15 +55,15 @@ const Experience: React.FC<ExperienceProps> = ({ className, }) => {
           </Button>
         </div>
         <div className="hidden sm:flex gap-16 rotate-[5deg] self-center xl:self-start">
-          {team.map((teamCol, colNum) => (
+          {workers2D?.map((teamCol, colNum) => (
             <div className="flex flex-col gap-20" key={colNum}>
               {teamCol.map((teamItem, index) => (
                 <div className="relative group" key={`${colNum}_${index}`}>
-                  <Image
-                    src={teamItem.imageHref}
+                  <LaravelImage
+                    src={`storage/${teamItem?.imageHref}`}
                     width={191}
                     height={254}
-                    alt={teamItem.name}
+                    alt={teamItem?.name || ""}
                     className={`rounded-[12px] ${
                       colNum == 1 && index == 0 ? "mt-60" : ""
                     }`}

@@ -2,7 +2,9 @@ import Container from "@/components/Container";
 import Link from "next/link";
 import Image from "next/image";
 import { Button, Rating } from "@mantine/core";
-import { IComment } from "@/lib/interfaces";
+import { IComment, ITeam, ITeamItem } from "@/lib/interfaces";
+import LaravelImage from "./LaravelImage";
+import { to2DArray } from "@/lib/utils";
 
 export interface HeroProps {
   className?: string;
@@ -16,23 +18,13 @@ const userComment: IComment = {
     comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Utenimad minim veniam."
 };
 
-export const team = [
-  [
-    {imageHref: "/team1.jpg", name: "Worker 1", position: "Manager"},
-    {imageHref: "/team2.jpg", name: "Worker 2", position: "Manager"},
-  ],
-  [
-    {imageHref: "/team3.jpg", name: "Worker 3", position: "Manager"},
-    {imageHref: "/team4.jpg", name: "Worker 4", position: "Manager"},
-  ],
-  [
-    {imageHref: "/team5.jpg", name: "Worker 5", position: "Manager"},
-    {imageHref: "/team6.jpg", name: "Worker 6", position: "Manager"},
-  ],
-];
-
-const Hero: React.FC<HeroProps> = ({ className, }) => {
+const Hero: React.FC<HeroProps> = async ({ className, }) => {
   const classNameValue = className ? `${className}` : "";
+
+  const teamResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/teams?skip=0&take=6`, {next: {tags: ['team']}});
+  const team: ITeam = await teamResponse.json();
+  const workers: ITeamItem[] = team && team.workers ? team.workers : [];
+  const workers2D: ITeamItem[][] = to2DArray(workers);
 
   return (
     <Container className={`mt-80 xl:mt-70 ${classNameValue}`}>
@@ -80,24 +72,24 @@ const Hero: React.FC<HeroProps> = ({ className, }) => {
           </div>
         </div>
         <div className="hidden sm:flex gap-16 rotate-[5deg] mt-50 xl:mt-0">
-          {team.map((teamCol, colNum) => (
+          {workers2D?.map((teamCol, colNum) => (
             <div className="flex flex-col gap-20" key={colNum}>
               {teamCol.map((teamItem, index) => (
                 <div className="relative group" key={`${colNum}_${index}`}>
-                  <Image
-                    src={teamItem.imageHref}
+                  <LaravelImage
+                    src={`storage/${teamItem?.imageHref}`}
                     width={191}
                     height={254}
-                    alt={teamItem.name}
+                    alt={teamItem?.name || ""}
                     className={`rounded-[12px] ${colNum == 1 && index == 0 ? 'mt-60': ''}`}
                   />
                   <div className="hidden group-hover:block absolute left-0 bottom-0 right-0 h-80 px-20 pb-5">
                     <div className="bg-white p-12 rounded-[8px] text-center">
                       <h3 className="text-[14px] leading-20 font-semibold tracking-[-0.02em] text-mirage">
-                        {teamItem.name}
+                        {teamItem?.name}
                       </h3>
                       <p className="mt-5 text-[14px] leading-20 font-semibold tracking-[-0.02em]">
-                        {teamItem.position}
+                        {teamItem?.position}
                       </p>
                     </div>
                   </div>

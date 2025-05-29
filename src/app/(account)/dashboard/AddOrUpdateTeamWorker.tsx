@@ -5,6 +5,7 @@ import { ICreateWorker, ITeam, ITeamError, ITeamItem, IUpdateWorker } from "@/li
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import SvgIcon from "@/components/SvgIcon";
 import { useMediaQuery } from "@mantine/hooks";
+import { revalidateTeam } from "@/lib/revalidate";
 
 interface AddOrUpdateTeamWorkerProps {
   className?: string;
@@ -107,20 +108,22 @@ const AddOrUpdateTeamWorker: React.FC<AddOrUpdateTeamWorkerProps> = ({
     }
   };
 
-  const handleAddOrUpdate = (values: typeof form.values) => {
+  const handleAddOrUpdate = async (values: typeof form.values) => {
     // adding woker
     if(mode == "add") {
-      createWorker({
+      await createWorker({
         name: values.name,
         position: values.position,
         photo: fileHandle,
         setErrors,
         setStatus,
       });
+      // revalidate after adding worker
+      await revalidateTeam();
     }
     // updating existing worker
     if(mode == "update" && worker && worker.id) {
-      updateWorker({
+      await updateWorker({
         id: worker?.id,
         name: values.name,
         position: values.position,
@@ -128,6 +131,8 @@ const AddOrUpdateTeamWorker: React.FC<AddOrUpdateTeamWorkerProps> = ({
         setErrors,
         setStatus,
       });
+      // revalidate after updating worker
+      await revalidateTeam();
     }
   };
 

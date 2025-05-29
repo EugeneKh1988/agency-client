@@ -1,14 +1,17 @@
 import Container from "@/components/Container";
-import Image from "next/image";
-import { team } from "./Hero";
+import { ITeam, ITeamItem } from "@/lib/interfaces";
+import LaravelImage from "./LaravelImage";
 
 export interface TeamListProps {
   className?: string;
 }
 
-const TeamList: React.FC<TeamListProps> = ({ className }) => {
+const TeamList: React.FC<TeamListProps> = async ({ className }) => {
   const classNameValue = className ? `${className}` : "";
-  const flattenTeamArray = team.flat();
+  
+  const teamResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/teams?skip=0&take=10`, {next: {tags: ['team']}});
+  const team: ITeam = await teamResponse.json();
+  const flattenTeamArray: ITeamItem[] = team && team.workers ? team.workers : [];
 
   return (
     <Container className={`mt-100 md:mt-150 ${classNameValue}`}>
@@ -26,20 +29,20 @@ const TeamList: React.FC<TeamListProps> = ({ className }) => {
               index % 2 == 0 ? "rotate-[2.5deg]" : "rotate-[-1.2deg]"
             }`}
           >
-            <Image
-              src={teamItem.imageHref}
+            <LaravelImage
+              src={`storage/${teamItem.imageHref}`}
               width={315}
               height={420}
-              alt={teamItem.name}
+              alt={teamItem?.name || ""}
               className="rounded-[12px]"
             />
             <div className="hidden group-hover:block absolute left-1/3 -translate-x-[10%] bottom-0 h-80 px-20 pb-5 rotate-2">
               <div className="bg-white p-12 rounded-[8px] text-center min-w-[146px]">
                 <h3 className="text-[14px] leading-20 font-semibold tracking-[-0.02em] text-mirage">
-                  {teamItem.name}
+                  {teamItem?.name}
                 </h3>
                 <p className="mt-5 text-[14px] leading-20 font-semibold tracking-[-0.02em]">
-                  {teamItem.position}
+                  {teamItem?.position}
                 </p>
               </div>
             </div>
