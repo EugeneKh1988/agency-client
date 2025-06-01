@@ -151,3 +151,60 @@ export interface IDeleteWorker {
     setStatus: (status: string | null) => void;
     id: number;
 }
+
+// messages api
+export interface IMessageItem {
+    id?: number;
+    name?: string;
+    email?: string;
+    phone?: string;
+    question?: string;
+    answer?: string;
+    was_answered?: boolean;
+    user_id?: number;
+    created_at?: string;
+}
+
+export interface IMessage {
+    messages: IMessageItem[];
+    count: number;
+}
+
+export interface IMessageError {
+    id?: string[];
+    name?: string[];
+    email?: string[];
+    phone?: string[];
+    question?: string[];
+    create_sort?: string[];
+    answered?: string[];
+    count?: string[];
+    skip?: string[];
+}
+
+export interface ICreateMessage {
+    setErrors: Dispatch<SetStateAction<IMessageError>>;
+    setStatus: Dispatch<SetStateAction<string | null>>;
+    name: string;
+    email: string;
+    phone?: string;
+    question: string;
+}
+
+export interface IUpdateMessage {
+    setErrors: Dispatch<SetStateAction<IMessageError>>;
+    setStatus: (status: string | null) => void;
+    id: number;
+    name?: string;
+    email?: string;
+    phone?: string;
+    question?: string;
+    answer?: string;
+    was_answered?: boolean;
+}
+
+export interface IDeleteMessage {
+    setErrors: Dispatch<SetStateAction<IMessageError>>;
+    setStatus: (status: string | null) => void;
+    id: number;
+}

@@ -3,7 +3,7 @@
 import Container from "@/components/Container";
 import { IContact } from "@/lib/interfaces";
 import { Button, Textarea, TextInput } from "@mantine/core";
-import { useForm } from "@mantine/form";
+import { hasLength, useForm } from "@mantine/form";
 import SvgIcon from "./SvgIcon";
 
 export interface ContactFormProps {
@@ -39,6 +39,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
 
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      name: hasLength({ min: 3 }, "Must be at least 3 characters"),
+      question: hasLength({ min: 6 }, "Must be at least 6 characters"),
     },
   });
 
