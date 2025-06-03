@@ -24,7 +24,7 @@ interface AccountTeamProps {
   className?: string;
 }
 
-const AccountDetails: React.FC<AccountTeamProps> = ({
+const AccountTeam: React.FC<AccountTeamProps> = ({
   className,
   isAdminTab,
 }) => {
@@ -176,4 +176,4 @@ const AccountDetails: React.FC<AccountTeamProps> = ({
   );
 };
 
-export default AccountDetails;
+export default AccountTeam;

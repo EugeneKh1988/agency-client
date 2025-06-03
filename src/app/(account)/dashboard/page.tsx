@@ -7,10 +7,12 @@ import { Tabs, TabsList, TabsPanel, TabsTab } from "@mantine/core";
 import React from "react";
 import AccountDetails from "./AccountDetails";
 import AccountTeam from "./AccountTeam";
+import AccountMessages from "./AccountMessages";
 
 const tabsItems = [
   {title: "Account details", value: "account-details", isAdminTab: false },
   {title: "Team", value: "team", isAdminTab: true },
+  {title: "Messages", value: "messages", isAdminTab: false },
 ];
 
 export default function DashboardPage() {
@@ -26,6 +28,9 @@ export default function DashboardPage() {
     }
     if(value == "team") {
       return <AccountTeam isAdminTab={isAdminTab} />
+    }
+    if(value == "messages") {
+      return <AccountMessages isAdminTab={isAdminTab} />
     }
     return null;
   };

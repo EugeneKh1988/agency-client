@@ -5,13 +5,13 @@ import { ICreateMessage, IUpdateMessage, IDeleteMessage, IMessage, } from '@/lib
 export const useMessages = ({
   count = 10,
   skip = 0,
-  create_sort = "",
-  answered = "",
+  create_sort,
+  answered,
 }: {
   count: number;
   skip: number;
-  create_sort: string;
-  answered: string;
+  create_sort?: string | null;
+  answered?: string | null;
 }) => {
   const {
     data: messages,
@@ -86,7 +86,7 @@ export const useMessages = ({
       });
   };
 
-  const deleteWorker = async ({ setErrors, setStatus, id }: IDeleteMessage) => {
+  const deleteMessage = async ({ setErrors, setStatus, id }: IDeleteMessage) => {
     await csrf();
 
     setErrors({});
@@ -109,6 +109,6 @@ export const useMessages = ({
     messages,
     create,
     update,
-    deleteWorker,
+    deleteMessage,
   };
 };
