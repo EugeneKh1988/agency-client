@@ -180,6 +180,7 @@ export interface IMessageError {
     answered?: string[];
     count?: string[];
     skip?: string[];
+    captcha?: string[];
 }
 
 export interface ICreateMessage {
@@ -189,6 +190,7 @@ export interface ICreateMessage {
     email: string;
     phone?: string;
     question: string;
+    captcha?: string;
 }
 
 export interface IUpdateMessage {

@@ -2,7 +2,7 @@
 
 import Container from "@/components/Container";
 import { IContact, ICreateMessage, IMessageError } from "@/lib/interfaces";
-import { Alert, Button, Textarea, TextInput } from "@mantine/core";
+import { ActionIcon, Alert, Button, Textarea, TextInput } from "@mantine/core";
 import { hasLength, useForm } from "@mantine/form";
 import SvgIcon from "./SvgIcon";
 import axios from "@/lib/axios";
@@ -31,11 +31,12 @@ export const contacts: IContact[] = [
 const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
   const classNameValue = className ? `${className}` : "";
 
+  const [captchaImg, setCaptchaImg] = useState<string | null>('');
   const [errors, setErrors] = useState<IMessageError>({});
   const [status, setStatus] = useState<string | null>(null);
 
   // auth api
-  const { isAdmin, user } = useAuth({
+  const { user } = useAuth({
     middleware: "auth",
     redirectIfAuthenticated: "/dashboard",
   });
@@ -47,6 +48,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       email: "",
       phone: "",
       question: "",
+      captchaCode: "",
     },
 
     validate: {
@@ -65,6 +67,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
     email,
     phone,
     question,
+    captcha,
   }: ICreateMessage) => {
     await csrf();
 
@@ -72,7 +75,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
     setStatus(null);
 
     axios
-      .post("/api/messages", { name, email, phone, question })
+      .post("/api/messages", { name, email, phone, question, captcha })
       .then((response) => {
         setStatus(response.data.status);
       })
@@ -83,12 +86,30 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       });
   };
 
+  const loadCaptcha = () => {
+    axios
+      .get("/captcha", {
+        responseType: "blob", // важно!
+      })
+      .then((res) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(res.data);
+
+        reader.onload = function () {
+          setCaptchaImg(reader.result as string); // base64 data
+        };
+        form.setValues({captchaCode: ''});
+        setErrors({});
+      });
+  };
+
   const handleSendMessage = (values: typeof form.values) => {
     sendMessage({
       name: values.name,
       email: values.email,
       phone: values.phone,
       question: values.question,
+      captcha: values.captchaCode,
       setErrors,
       setStatus,
     });
@@ -100,7 +121,8 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
       errors.email ||
       errors.id ||
       errors.phone ||
-      errors.question
+      errors.question ||
+      errors.captcha
     ) {
       return (
         <Alert
@@ -123,6 +145,9 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
               <li key={index}>{item}</li>
             ))}
             {errors.question?.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+            {errors.captcha?.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
@@ -149,6 +174,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
 
   // set initial values
   useEffect(() => {
+    loadCaptcha();
     if (user) {
       form.setValues({
         name: user?.name || "",
@@ -226,6 +252,29 @@ const ContactForm: React.FC<ContactFormProps> = ({ className }) => {
                 "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-140 text-lynch",
             }}
           />
+          {/* Show captcha when user is not logged */}
+          {!user && (
+            <div className="mt-14 flex gap-10 items-center">
+              {captchaImg && <img src={captchaImg} alt="Image" />}
+              <TextInput
+                placeholder="Captcha"
+                key={form.key("captchaCode")}
+                {...form.getInputProps("captchaCode")}
+                classNames={{
+                  root: "grow",
+                  input:
+                    "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-36 text-lynch",
+                }}
+              />
+              <ActionIcon
+                variant="subtle"
+                size={36}
+                onClick={() => loadCaptcha()}
+              >
+                <SvgIcon iconName="reload" />
+              </ActionIcon>
+            </div>
+          )}
           {showErrors()}
           {showStatus()}
           <Button
