@@ -6,6 +6,7 @@ import Link from "next/link";
 import SvgIcon from "./SvgIcon";
 import { ILink } from "@/lib/interfaces";
 import { headerMenu } from "./Nav";
+import SubscriptionForm from "./SubscriptionForm";
 
 export interface FooterProps {
   className?: string;
@@ -73,31 +74,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           </div>
         </div>
         <div>
-          <h5 className="text-[16px] leading-24 text-mirage font-semibold">
-            Subscribe to newsletter
-          </h5>
-          <p className="mt-12 text-[14px] leading-30">
-            Lorem ipsum dolor sit amet, consec tetur adip iscing elit. Sit quis
-            auctor.
-          </p>
-          <div className="flex items-start mt-21">
-            <TextInput
-              placeholder="Enter email address"
-              classNames={{
-                input:
-                  "rounded-l-[3px] rounded-r-none min-h-50 placeholder:text-lynch border-r-none border-[#E4E4E7]",
-                root: "grow",
-              }}
-            />
-            <Button
-              variant="filled"
-              component={Link}
-              href="/contact"
-              className="shrink-0 rounded-l-none min-h-50 px-28 text-black-haze bg-mauvelous hover:bg-mauvelous-600 text-[14px] leading-20 tracking-[-0.02em] font-semibold"
-            >
-              Subscribe
-            </Button>
-          </div>
+          <SubscriptionForm />
           <div className="flex gap-19 items-center mt-51">
             <p className="text-[14px] leading-24 text-mirage">Follow us on:</p>
             <Link href="#">

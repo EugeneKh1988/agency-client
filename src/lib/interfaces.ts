@@ -210,3 +210,16 @@ export interface IDeleteMessage {
     setStatus: (status: string | null) => void;
     id: number;
 }
+
+// subscription api types
+
+export interface ISubscriptionError {
+    email?: string[];
+    verify?: string[];
+}
+
+export interface ISubscriptionRequest {
+    setErrors: Dispatch<SetStateAction<ISubscriptionError>>;
+    setStatus: Dispatch<SetStateAction<string | null>>;
+    email: string;
+}
