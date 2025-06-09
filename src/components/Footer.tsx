@@ -1,14 +1,13 @@
 import Container from "@/components/Container";
 import Logo from "../../public/Logo.svg";
 import Image from "next/image";
-import { Button, TextInput } from "@mantine/core";
 import Link from "next/link";
 import SvgIcon from "./SvgIcon";
 import { ILink } from "@/lib/interfaces";
 import { headerMenu } from "./Nav";
 import SubscriptionForm from "./SubscriptionForm";
 
-export interface FooterProps {
+interface FooterProps {
   className?: string;
 }
 

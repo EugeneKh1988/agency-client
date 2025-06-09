@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ITeam, ITeamItem } from "@/lib/interfaces";
 import LaravelImage from "./LaravelImage";
 
-export interface TeamProps {
+interface TeamProps {
   className?: string;
 }
 

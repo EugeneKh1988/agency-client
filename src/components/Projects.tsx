@@ -3,7 +3,7 @@ import { IProject, } from "@/lib/interfaces";
 import Image from "next/image";
 import Link from "next/link";
 
-export interface ProjectProps {
+interface ProjectProps {
   className?: string;
 }
 

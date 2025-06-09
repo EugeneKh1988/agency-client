@@ -4,7 +4,7 @@ import { Button } from "@mantine/core";
 import Link from "next/link";
 import PricingItem from "./PricingItem";
 
-export interface PricingProps {
+interface PricingProps {
   className?: string;
 }
 

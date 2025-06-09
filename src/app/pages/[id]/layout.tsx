@@ -1,4 +1,3 @@
-import Nav from "@/components/Nav";
 import Project from "@/components/Projects";
 import type { Metadata } from "next";
 

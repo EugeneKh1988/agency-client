@@ -4,7 +4,7 @@ import SvgIcon from "./SvgIcon";
 import { serviceItems } from "./Services";
 import React from "react";
 
-export interface DescriptionServicesProps {
+interface DescriptionServicesProps {
   className?: string;
 }
 

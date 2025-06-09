@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import { IService } from "@/lib/interfaces";
 import SvgIcon from "./SvgIcon";
 
-export interface TeamDoProps {
+interface TeamDoProps {
   className?: string;
 }
 

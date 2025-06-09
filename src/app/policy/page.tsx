@@ -2,7 +2,6 @@ import Container from "@/components/Container";
 import SvgIcon from "@/components/SvgIcon";
 import { IBlock } from "@/lib/interfaces";
 import React from "react";
-import { isArray } from "util";
 
 const terms: IBlock[] = [
   {

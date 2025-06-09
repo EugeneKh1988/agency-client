@@ -123,7 +123,7 @@ const AccountTeam: React.FC<AccountTeamProps> = ({
   return (
     <div {...classNameValue}>
       <p className="text-[14px] leading-18 text-mirage font-medium mb-12">
-        Team's workers
+        Team&apos;s workers
       </p>
       <Table>
         <TableThead>

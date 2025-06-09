@@ -80,7 +80,7 @@ const DeleteMessage: React.FC<DeleteMessageProps> = ({
       setDisabled(true);
       // revalidate cache
       //await revalidateTeam();
-    } catch (err) {
+    } catch {
       setDisabled(false);
     }
   };

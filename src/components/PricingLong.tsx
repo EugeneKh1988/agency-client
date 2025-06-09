@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import { prices } from "./Pricing";
 import PricingItem from "./PricingItem";
 
-export interface PricingLongProps {
+interface PricingLongProps {
   className?: string;
 }
 

@@ -3,7 +3,7 @@ import { IFaq, IImage } from "@/lib/interfaces";
 import { Accordion, AccordionControl, AccordionItem, AccordionPanel } from "@mantine/core";
 import Image from "next/image";
 
-export interface FaqProps {
+interface FaqProps {
   className?: string;
 }
 

@@ -6,7 +6,7 @@ import Link from "next/link";
 import SvgIcon from "./SvgIcon";
 import React from "react";
 
-export interface ProjectInfoProps {
+interface ProjectInfoProps {
   id: number;
   className?: string;
 }

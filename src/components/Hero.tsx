@@ -6,7 +6,7 @@ import { IComment, ITeam, ITeamItem } from "@/lib/interfaces";
 import LaravelImage from "./LaravelImage";
 import { to2DArray } from "@/lib/utils";
 
-export interface HeroProps {
+interface HeroProps {
   className?: string;
 }
 

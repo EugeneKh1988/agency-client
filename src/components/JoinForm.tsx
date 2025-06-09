@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/components/Container";
-import { Button, Select, Textarea, TextInput } from "@mantine/core";
+import { Button, Select, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import SvgIcon from "./SvgIcon";
 import { contacts } from "./ContactForm";
@@ -9,7 +9,7 @@ import { positions } from "./AvailablePositions";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { useRef, useState } from "react";
 
-export interface JoinFormProps {
+interface JoinFormProps {
   className?: string;
 }
 

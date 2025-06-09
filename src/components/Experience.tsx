@@ -5,7 +5,7 @@ import { ITeam, ITeamItem } from "@/lib/interfaces";
 import LaravelImage from "./LaravelImage";
 import { to2DArray } from "@/lib/utils";
 
-export interface ExperienceProps {
+interface ExperienceProps {
   className?: string;
 }
 

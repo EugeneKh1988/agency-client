@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import preview from "../../public/vid-preview.png";
 import Image from "next/image";
 
-export interface WorksProps {
+interface WorksProps {
   className?: string;
 }
 

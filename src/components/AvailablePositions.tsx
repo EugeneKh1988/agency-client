@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import { IPosition } from "@/lib/interfaces";
 import SvgIcon from "./SvgIcon";
 
-export interface AvailablePositionsProps {
+interface AvailablePositionsProps {
   className?: string;
 }
 

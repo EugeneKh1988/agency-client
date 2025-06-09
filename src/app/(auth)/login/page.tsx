@@ -7,8 +7,8 @@ import { ILoginError } from "@/lib/interfaces";
 import { Alert, Button, Checkbox, TextInput } from "@mantine/core";
 import { isEmail, useForm } from "@mantine/form";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 
 
 export default function LoginPage() {
@@ -75,74 +75,78 @@ export default function LoginPage() {
     } else {
       setStatus(null);
     }
-  });
+  }, [searchParams.get("reset")]);
 
   return (
-    <Container className="mt-100 md:mt-150">
-      <div className="max-w-400 mx-auto">
-        {status && <p className="text-[14px] leading-18 text-mirage mb-14 font-medium">{status}</p>}
-        <p className="text-[14px] leading-18 text-mirage">
-          Enter your username and password to login or <Link href="/register" className="text-shakespeare">create new account</Link>
-        </p>
-        <form className="mt-14" onSubmit={form.onSubmit(handleLogin)}>
-          <TextInput
-            placeholder="Email"
-            key={form.key("email")}
-            {...form.getInputProps("email")}
-            classNames={{
-              input:
-                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
-            }}
-          />
-          <TextInput
-            placeholder="Password"
-            type={shown ? "text" : "password"}
-            key={form.key("password")}
-            {...form.getInputProps("password")}
-            classNames={{
-              input:
-                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
-              root: "mt-17",
-            }}
-            rightSection={
-              shown ? (
-                <div onClick={() => viewPassword(!shown)}>
-                  <SvgIcon iconName="show" className="size-20" />
-                </div>
-              ) : (
-                <div onClick={() => viewPassword(!shown)}>
-                  <SvgIcon iconName="hide" className="size-20" />
-                </div>
-              )
-            }
-          />
-          <div className="flex justify-between sm:items-center mt-14 flex-wrap sm:flex-nowrap gap-10">
-            <Checkbox
-              label="Remember me"
-              key={form.key("remember")}
-              {...form.getInputProps("remember")}
-              classNames={{label: "text-[14px] leading-16"}}
-            />
-            <Link
-              href="/forgot-password"
-              className="text-[14px] leading-16"
-            >
-              Forgot Password?
+    <Suspense>
+      <Container className="mt-100 md:mt-150">
+        <div className="max-w-400 mx-auto">
+          {status && (
+            <p className="text-[14px] leading-18 text-mirage mb-14 font-medium">
+              {status}
+            </p>
+          )}
+          <p className="text-[14px] leading-18 text-mirage">
+            Enter your username and password to login or{" "}
+            <Link href="/register" className="text-shakespeare">
+              create new account
             </Link>
-          </div>
-          {
-            showErrors() 
-          }
-          <Button
-            type="submit"
-            classNames={{
-              root: "mt-27 min-h-48 text-[14px] leading-20 font-semibold bg-shakespeare hover:bg-shakespeare-700 text-white w-full",
-            }}
-          >
-            Login
-          </Button>
-        </form>
-      </div>
-    </Container>
+          </p>
+          <form className="mt-14" onSubmit={form.onSubmit(handleLogin)}>
+            <TextInput
+              placeholder="Email"
+              key={form.key("email")}
+              {...form.getInputProps("email")}
+              classNames={{
+                input:
+                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+              }}
+            />
+            <TextInput
+              placeholder="Password"
+              type={shown ? "text" : "password"}
+              key={form.key("password")}
+              {...form.getInputProps("password")}
+              classNames={{
+                input:
+                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+                root: "mt-17",
+              }}
+              rightSection={
+                shown ? (
+                  <div onClick={() => viewPassword(!shown)}>
+                    <SvgIcon iconName="show" className="size-20" />
+                  </div>
+                ) : (
+                  <div onClick={() => viewPassword(!shown)}>
+                    <SvgIcon iconName="hide" className="size-20" />
+                  </div>
+                )
+              }
+            />
+            <div className="flex justify-between sm:items-center mt-14 flex-wrap sm:flex-nowrap gap-10">
+              <Checkbox
+                label="Remember me"
+                key={form.key("remember")}
+                {...form.getInputProps("remember")}
+                classNames={{ label: "text-[14px] leading-16" }}
+              />
+              <Link href="/forgot-password" className="text-[14px] leading-16">
+                Forgot Password?
+              </Link>
+            </div>
+            {showErrors()}
+            <Button
+              type="submit"
+              classNames={{
+                root: "mt-27 min-h-48 text-[14px] leading-20 font-semibold bg-shakespeare hover:bg-shakespeare-700 text-white w-full",
+              }}
+            >
+              Login
+            </Button>
+          </form>
+        </div>
+      </Container>
+    </Suspense>
   );
 }

@@ -4,7 +4,7 @@ import { Button, Table, TableTbody, TableTd, TableTh, TableThead, TableTr } from
 import Link from "next/link";
 import SvgIcon from "./SvgIcon";
 
-export interface PlanCompareProps {
+interface PlanCompareProps {
   className?: string;
 }
 

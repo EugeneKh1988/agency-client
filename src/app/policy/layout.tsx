@@ -1,4 +1,3 @@
-import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import type { Metadata } from "next";

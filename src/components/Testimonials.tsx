@@ -3,7 +3,7 @@ import { IComment } from "@/lib/interfaces";
 import { Carousel, CarouselSlide } from "@mantine/carousel";
 import Image from "next/image";
 
-export interface TestimonialsProps {
+interface TestimonialsProps {
   className?: string;
 }
 

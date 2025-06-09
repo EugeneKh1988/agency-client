@@ -4,7 +4,7 @@ import { Carousel, CarouselSlide } from "@mantine/carousel";
 import Image from "next/image";
 import SvgIcon from "./SvgIcon";
 
-export interface CollaborateProps {
+interface CollaborateProps {
   className?: string;
 }
 

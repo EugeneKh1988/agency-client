@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 import { ITeam, ITeamItem } from "@/lib/interfaces";
 import LaravelImage from "./LaravelImage";
 
-export interface TeamListProps {
+interface TeamListProps {
   className?: string;
 }
 

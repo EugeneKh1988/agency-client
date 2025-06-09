@@ -15,7 +15,6 @@ export const useMessages = ({
 }) => {
   const {
     data: messages,
-    error,
     mutate,
   } = useSWR<IMessage>(
     `/api/messages?count=${count}&skip=${skip}&create_sort=${create_sort}&answered=${answered}`,

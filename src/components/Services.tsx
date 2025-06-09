@@ -3,7 +3,7 @@ import Link from "next/link";
 import { IService } from "@/lib/interfaces";
 import SvgIcon from "./SvgIcon";
 
-export interface ServicesProps {
+interface ServicesProps {
   className?: string;
 }
 

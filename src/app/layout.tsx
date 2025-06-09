@@ -9,6 +9,7 @@ import '@mantine/notifications/styles.css';
 import "./globals.css";
 import { GlobalContextProvider } from "@/context/store";
 import { Notifications } from '@mantine/notifications';
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Creative agency site",
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body>
         <MantineProvider theme={theme}>
           <Notifications />
-          <GlobalContextProvider>{children}</GlobalContextProvider>
+          <GlobalContextProvider>
+            <Suspense fallback={<div>Loading ...</div>}>{children}</Suspense>
+          </GlobalContextProvider>
         </MantineProvider>
       </body>
     </html>

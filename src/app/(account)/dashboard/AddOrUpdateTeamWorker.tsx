@@ -1,7 +1,7 @@
 import { Alert, Button, Modal, ScrollArea, TextInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useEffect, useRef, useState } from "react";
-import { ICreateWorker, ITeam, ITeamError, ITeamItem, IUpdateWorker } from "@/lib/interfaces";
+import { ICreateWorker, ITeamError, ITeamItem, IUpdateWorker } from "@/lib/interfaces";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import SvgIcon from "@/components/SvgIcon";
 import { useMediaQuery } from "@mantine/hooks";
@@ -26,7 +26,7 @@ const AddOrUpdateTeamWorker: React.FC<AddOrUpdateTeamWorkerProps> = ({
   createWorker,
   updateWorker,
 }) => {
-  const classNameValue = className ? `${className}` : "";
+  const classNameValue = className ? {className} : {};
   const [errors, setErrors] = useState<ITeamError>({});
   const [status, setStatus] = useState<string | null>(null);
 
@@ -137,9 +137,9 @@ const AddOrUpdateTeamWorker: React.FC<AddOrUpdateTeamWorkerProps> = ({
   };
 
   return (
-    <Modal opened={opened} onClose={onClose} fullScreen={isMobile} scrollAreaComponent={ScrollArea.Autosize}>
+    <Modal opened={opened} onClose={onClose} fullScreen={isMobile} scrollAreaComponent={ScrollArea.Autosize} {...classNameValue}>
       <div>
-        <p className="text-[14px] leading-30">Upload worker's photo</p>
+        <p className="text-[14px] leading-30">Upload worker&apos;s photo</p>
         <Dropzone
           onDrop={(files) =>
             files && files.length > 0 ? setFileHandle(files[0]) : null

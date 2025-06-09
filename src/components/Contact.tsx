@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@mantine/core";
 import Link from "next/link";
 
-export interface ContactProps {
+interface ContactProps {
   className?: string;
 }
 

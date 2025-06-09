@@ -19,7 +19,7 @@ export default async function Custom404() {
     <>
       <Nav activeMenuName="404" />
       <div className="flex gap-30 justify-center relative mt-64">
-        {new Array(0, 1).map((index) => (
+        {[0, 1].map((index) => (
           <div className="flex gap-16 rotate-[5deg] mt-50 xl:mt-0" key={index}>
             {workers2D?.map((teamCol, colNum) => (
               <div className="flex flex-col gap-20" key={colNum}>

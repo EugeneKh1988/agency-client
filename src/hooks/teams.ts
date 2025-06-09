@@ -7,7 +7,6 @@ export const useTeams = ({ count = 10, skip = 0 }: {count: number, skip: number}
 
     const {
       data: team,
-      error,
       mutate,
     } = useSWR<ITeam>(
       `/api/teams?count=${count}&skip=${skip}`,

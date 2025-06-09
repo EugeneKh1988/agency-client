@@ -3,7 +3,7 @@ import worker from "../../public/team3.jpg";
 import Image from "next/image";
 import { IStat } from "@/lib/interfaces";
 
-export interface GrowthProps {
+interface GrowthProps {
   className?: string;
 }
 
@@ -49,8 +49,8 @@ const Growth: React.FC<GrowthProps> = ({ className }) => {
         </div>
         <div className="lg:max-w-648">
           <h2 className="text-[32px] md:text-[48px] leading-52 md:leading-68 font-semibold tracking-[-1px] text-mirage">
-            “Maximize Your Reach with Marketing - Unlock Your Business's Growth
-            Potential!"
+            &ldquo;Maximize Your Reach with Marketing - Unlock Your Business&apos;s Growth
+            Potential!&ldquo;
           </h2>
           <p className="text-[18px] leading-32 mt-32">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

@@ -3,7 +3,7 @@ import { Button } from "@mantine/core";
 import Link from "next/link";
 
 
-export interface PricingItemProps {
+interface PricingItemProps {
   active: boolean;
   price: IPrice;
   className?: string;
@@ -14,7 +14,7 @@ const PricingItem: React.FC<PricingItemProps> = ({ className, active, price }) =
 
   return (
     <div
-      className={`text-center pt-31 pb-47 rounded-[12px] ${
+      className={`${classNameValue} text-center pt-31 pb-47 rounded-[12px] ${
         active ? "bg-mauvelous" : "bg-white border border-[#E5EAF1]"
       }`}
     >

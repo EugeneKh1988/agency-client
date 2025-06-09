@@ -12,7 +12,7 @@ const FaqTabs: React.FC<FaqTabsProps> = ({ className }) => {
   
 
   const groups = () => {
-    let groups_: string[] = ["all"];
+    const groups_: string[] = ["all"];
     answers.forEach((answer) => {
       if (answer.group && !groups_.includes(answer.group)) {
         groups_.push(answer.group);

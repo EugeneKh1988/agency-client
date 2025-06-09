@@ -4,10 +4,10 @@ import Container from "@/components/Container";
 import SvgIcon from "@/components/SvgIcon";
 import { useAuth } from "@/hooks/auth";
 import { ILoginError } from "@/lib/interfaces";
-import { Alert, Button, Checkbox, TextInput } from "@mantine/core";
+import { Alert, Button, TextInput } from "@mantine/core";
 import { hasLength, isEmail, matchesField, useForm } from "@mantine/form";
 import Link from "next/link";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 
 export default function RegisterPage() {
@@ -69,78 +69,80 @@ export default function RegisterPage() {
   };
 
   return (
-    <Container className="mt-100 md:mt-150">
-      <div className="max-w-400 mx-auto">
-        <p className="text-[14px] leading-18 text-mirage">
-          Enter your email and password to register or{" "}
-          <Link href="/login" className="text-shakespeare">
-            login
-          </Link>
-        </p>
-        <form className="mt-14" onSubmit={form.onSubmit(handleRegister)}>
-          <TextInput
-            placeholder="Username"
-            key={form.key("name")}
-            {...form.getInputProps("name")}
-            classNames={{
-              input:
-                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
-            }}
-          />
-          <TextInput
-            placeholder="Enter your email address"
-            key={form.key("email")}
-            {...form.getInputProps("email")}
-            classNames={{
-              input:
-                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
-              root: "mt-17",
-            }}
-          />
-          <TextInput
-            placeholder="Password"
-            type={shown ? "text" : "password"}
-            key={form.key("password")}
-            {...form.getInputProps("password")}
-            classNames={{
-              input:
-                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
-              root: "mt-17",
-            }}
-            rightSection={
-              shown ? (
-                <div onClick={() => viewPassword(!shown)}>
-                  <SvgIcon iconName="show" className="size-20" />
-                </div>
-              ) : (
-                <div onClick={() => viewPassword(!shown)}>
-                  <SvgIcon iconName="hide" className="size-20" />
-                </div>
-              )
-            }
-          />
-          <TextInput
-            placeholder="Confirm Password"
-            type={shown ? "text" : "password"}
-            key={form.key("password_confirmation")}
-            {...form.getInputProps("password_confirmation")}
-            classNames={{
-              input:
-                "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
-              root: "mt-17",
-            }}
-          />
-          {showErrors()}
-          <Button
-            type="submit"
-            classNames={{
-              root: "mt-27 min-h-48 text-[14px] leading-20 font-semibold bg-shakespeare hover:bg-shakespeare-700 text-white w-full",
-            }}
-          >
-            Register
-          </Button>
-        </form>
-      </div>
-    </Container>
+    <Suspense>
+      <Container className="mt-100 md:mt-150">
+        <div className="max-w-400 mx-auto">
+          <p className="text-[14px] leading-18 text-mirage">
+            Enter your email and password to register or{" "}
+            <Link href="/login" className="text-shakespeare">
+              login
+            </Link>
+          </p>
+          <form className="mt-14" onSubmit={form.onSubmit(handleRegister)}>
+            <TextInput
+              placeholder="Username"
+              key={form.key("name")}
+              {...form.getInputProps("name")}
+              classNames={{
+                input:
+                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+              }}
+            />
+            <TextInput
+              placeholder="Enter your email address"
+              key={form.key("email")}
+              {...form.getInputProps("email")}
+              classNames={{
+                input:
+                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+                root: "mt-17",
+              }}
+            />
+            <TextInput
+              placeholder="Password"
+              type={shown ? "text" : "password"}
+              key={form.key("password")}
+              {...form.getInputProps("password")}
+              classNames={{
+                input:
+                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+                root: "mt-17",
+              }}
+              rightSection={
+                shown ? (
+                  <div onClick={() => viewPassword(!shown)}>
+                    <SvgIcon iconName="show" className="size-20" />
+                  </div>
+                ) : (
+                  <div onClick={() => viewPassword(!shown)}>
+                    <SvgIcon iconName="hide" className="size-20" />
+                  </div>
+                )
+              }
+            />
+            <TextInput
+              placeholder="Confirm Password"
+              type={shown ? "text" : "password"}
+              key={form.key("password_confirmation")}
+              {...form.getInputProps("password_confirmation")}
+              classNames={{
+                input:
+                  "placeholder:text-lynch rounded-none border border-[#EDEDED] pl-26 text-[14px] leading-30 min-h-47 text-lynch",
+                root: "mt-17",
+              }}
+            />
+            {showErrors()}
+            <Button
+              type="submit"
+              classNames={{
+                root: "mt-27 min-h-48 text-[14px] leading-20 font-semibold bg-shakespeare hover:bg-shakespeare-700 text-white w-full",
+              }}
+            >
+              Register
+            </Button>
+          </form>
+        </div>
+      </Container>
+    </Suspense>
   );
 }

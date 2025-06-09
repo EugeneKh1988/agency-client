@@ -81,7 +81,7 @@ const DeleteTeamWorker: React.FC<DeleteTeamWorkerProps> = ({
       setDisabled(true);
       // revalidate cache
       await revalidateTeam();
-    } catch (err) {
+    } catch {
       setDisabled(false);
     }
   };

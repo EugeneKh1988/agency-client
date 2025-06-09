@@ -1,7 +1,7 @@
 import Container from "@/components/Container";
 import Image from "next/image";
 
-export interface TrustedProps {
+interface TrustedProps {
   className?: string;
 }
 
